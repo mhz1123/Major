@@ -12,7 +12,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'first:index' %}">
             <img src="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/121029706/original/8b9db88597cc957466c278dda2268b4c5259fb67/make-you-a-nice-digital-2d-logo.jpg" class="rounded" width="30" height="30" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'first:index' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Bookmarks</a>
@@ -33,9 +33,10 @@
                 Login Options
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Sign In</a>
+                <a class="dropdown-item" href="./login">Login</a>
+                <a class="dropdown-item" href="./register">Register</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Sign out</a>
+                <a class="dropdown-item" href="./logout">Logout</a>
               </div>
             </li>
             <!--<li class="nav-item">
