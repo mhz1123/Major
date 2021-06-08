@@ -5,6 +5,9 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
+import wolframalpha
+client = wolframalpha.Client("R4U7JP-TEAKU27YYE")
+
 
 # Create your views here.
 def index(request):
@@ -45,3 +48,13 @@ def logout_request(request):
 	logout(request)
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("first:index")
+
+def search(request):
+	if request.method == "GET":
+		search = request.GET.get('search')
+
+	#res = client.query(search)
+	# res1=next(res.results).text
+	return render(request, "first/search_result.html",{
+		"search":search
+	})
