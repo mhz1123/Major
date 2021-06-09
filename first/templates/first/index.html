@@ -62,53 +62,27 @@
     </div>
 
     <div class="container">  
-        <h3>Computer Science</h3>
-        <div class="row py-3">
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <img class="card-img-top" src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Best-Programming-Languages-to-Start-Learning-Today.jpg" alt="Card image cap">
-                    <div class="card-body">
-                    <h5 class="card-title text-secondary">Card title</h5>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-dark">Read Full Article</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <img class="card-img-top" src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Best-Programming-Languages-to-Start-Learning-Today.jpg" alt="Card image cap">
-                    <div class="card-body">
-                    <h5 class="card-title text-secondary">Card title</h5>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-dark">Read Full Article</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <img class="card-img-top" src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Best-Programming-Languages-to-Start-Learning-Today.jpg" alt="Card image cap">
-                    <div class="card-body">
-                    <h5 class="card-title text-secondary">Card title</h5>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-dark">Read Full Article</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <img class="card-img-top" src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Best-Programming-Languages-to-Start-Learning-Today.jpg" alt="Card image cap">
-                    <div class="card-body">
-                    <h5 class="card-title text-secondary">Card title</h5>
-                    <p class="card-text text-muted">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-dark">Read Full Article</a>
-                    </div>
-                </div>
-              </div>
-        </div>
+        <h3>Physics</h3>
         
+        <div class="row py-3">
+            {% for key, value in scraped_res.items%}
+            
+                 
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <img class="card-img-top" src="https://www.simplilearn.com/ice9/free_resources_article_thumb/Best-Programming-Languages-to-Start-Learning-Today.jpg" alt="Card image cap">
+                            <div class="card-body">
+                            <h5 class="card-title text-secondary">{{key}}</h5>
+
+                            <p class="card-text text-muted">{{value}}</p>
+                            <!-- <a href="#" class="btn btn-dark">Read Full Article</a> -->
+                            </div>
+                        </div>
+                    </div>
+            
+            
+            {% endfor %}
+
         <h3>Physics</h3>
         <div class="row py-3">
             <div class="col-md-6 col-lg-3">

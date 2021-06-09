@@ -7,13 +7,62 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 import wolframalpha
 import wikipedia
+import re
+from urllib.request import Request, urlopen
+from bs4 import BeautifulSoup as soup
+
 client = wolframalpha.Client("R4U7JP-TEAKU27YYE")
 
 
 
 # Create your views here.
 def index(request):
-    return render(request, "first/index.html")
+
+	url = 'https://www.sciencedaily.com/news/matter_energy/physics/'
+
+	req = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+
+	webpage = urlopen(req).read()
+
+	page_soup = soup(webpage, "html.parser")
+
+	containers = page_soup.findAll("h3")
+
+	
+
+	head_list = []
+	data_list = []
+	# link_list = []
+	for container in containers:
+		head_list.append(container.text)
+
+
+	summary =page_soup.find_all("div", {"class": "latest-summary"})
+
+	for data in summary:
+		data_list.append(data.text)
+
+	len_head_list = len(head_list)-1
+
+	# links=page_soup.find_all("h3.a")
+	# for link in links:
+	# 	link_list.append(link.text)
+
+	scraped_res = {}
+	for key in head_list:
+		for value in data_list:
+			scraped_res[key] = value
+			data_list.remove(value)
+			break  
+	
+		
+	return render(request, "first/index.html",{
+		"head_list":head_list,
+		"scraped_res":scraped_res,
+		"data_list":data_list,
+		"len_head_list":len_head_list,
+		# "link_list":link_list,
+	})
 
 def register_request(request):
 	if request.method == "POST":
