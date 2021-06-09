@@ -6,6 +6,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate, logout
 import wolframalpha
+import wikipedia
 client = wolframalpha.Client("R4U7JP-TEAKU27YYE")
 
 
@@ -59,9 +60,11 @@ def search(request):
 	# search_str=""
 	res = client.query(search)
 	res1=next(res.results).text
+	wiksearch=wikipedia.summary(search, sentences=10)
 
 	return render(request, "first/search_result.html",{
 		"search":search,
 		"res1":res1,
+		"wiksearch":wiksearch,
 		
 	})
