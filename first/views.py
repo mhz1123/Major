@@ -9,6 +9,7 @@ import wolframalpha
 client = wolframalpha.Client("R4U7JP-TEAKU27YYE")
 
 
+
 # Create your views here.
 def index(request):
     return render(request, "first/index.html")
@@ -49,12 +50,18 @@ def logout_request(request):
 	messages.info(request, "You have successfully logged out.") 
 	return redirect("first:index")
 
+
+
 def search(request):
 	if request.method == "GET":
 		search = request.GET.get('search')
+		
+	# search_str=""
+	res = client.query(search)
+	res1=next(res.results).text
 
-	#res = client.query(search)
-	# res1=next(res.results).text
 	return render(request, "first/search_result.html",{
-		"search":search
+		"search":search,
+		"res1":res1,
+		
 	})
